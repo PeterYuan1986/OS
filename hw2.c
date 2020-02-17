@@ -13,12 +13,14 @@ fprintf(stderr, "Fork Failed\n");
 return 1;  }  
 if (outcome == 0) 
 { /* child process */    
-execlp("/bin/ls", "ls", NULL);  
+printf("outcome==0 process\n");  
+outcome =fork();
+if(outcome==0){printf("outcome==00 process\n");
+else {printf("nest parent process\n")}
 }  
 else 
 { /* parent process */    
 wait(NULL);    
-fork();
 fork();
 printf("Child process complete\n");  
 }  
